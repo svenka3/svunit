@@ -177,9 +177,11 @@
 `define SVTEST_END \
           end \
           begin \
+           `ifndef VERILATOR \
             if (svunit_ut.get_error_count() == local_error_count) begin \
               svunit_ut.wait_for_error(); \
             end \
+          `endif \
           end \
           `SVUNIT_FUSE \
         join_any \
